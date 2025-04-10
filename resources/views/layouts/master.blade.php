@@ -1,0 +1,7 @@
+@include('partial.head')
+@include('partial.toastr')
+@include('partial.topbar')
+@include('partial.sidebar')
+@yield('content')
+@include('partial.notifications')
+@include('partial.scripts')

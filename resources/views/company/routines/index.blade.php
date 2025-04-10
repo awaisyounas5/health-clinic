@@ -1,0 +1,50 @@
+@extends('layouts.master')
+@section('content')
+<div class="page-wrapper">
+    <div class="content">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-12">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('company.routines') }}">Routines </a></li>
+                        <li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
+                        <li class="breadcrumb-item active">View Routines</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card-box">
+                    <div class="card-block">
+                        <h6 class="card-title text-bold">View Routines By Patient</h6>
+                        <div class="table-responsive">
+                            <table class="datatable table table-stripped dataTable no-footer">
+                                <thead>
+                                    <tr role="row">
+                                        <th>#</th>
+                                        <th>Patient Name</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($routines as $patientId => $patientRoutines)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $patientRoutines->first()->patient->name }}</td>
+                                        <td>
+                                            <a class="btn btn-primary" href="{{ route('company.routines.view', $patientId) }}">View Entire Routine</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
